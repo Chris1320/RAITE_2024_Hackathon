@@ -4,6 +4,10 @@ import { FoodHub_backend } from 'declarations/FoodHub_backend';
 function App() {
   const [greeting, setGreeting] = useState('');
 
+  const [something, setSomething] = useState("");
+  
+  
+
   function handleSubmit(event) {
     event.preventDefault();
     const name = event.target.elements.name.value;
@@ -11,6 +15,15 @@ function App() {
       setGreeting(greeting);
     });
     return false;
+  }
+
+  const handleSomething = () => {
+    console.log("starting something")
+    FoodHub_backend.sample().then((result) => {
+      console.log("result")
+      console.log(result);
+      setSomething(result);
+    })
   }
 
   return (
@@ -23,6 +36,9 @@ function App() {
         <input id="name" alt="Name" type="text" />
         <button type="submit">Click Me!</button>
       </form>
+      <button type='button' onClick={handleSomething}>do something</button>
+      <h2>somethins</h2>
+      <p>{something}</p>
       <section id="greeting">{greeting}</section>
     </main>
   );

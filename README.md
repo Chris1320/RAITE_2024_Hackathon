@@ -15,9 +15,9 @@ This system has been tested on the following platforms:
   - Fedora Workstation 40
 - Dependencies
   - Python v3.10.7
-    - Kybra v0.5.\*
-  - NodeJS v16.0.0+
-    - NPM v7.0.0+
+    - Kybra v0.7.0+
+  - NodeJS v20.18.0+
+    - NPM v10.8.2+
 
 ## Development Setup
 
@@ -46,6 +46,7 @@ choose the default installation.
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+source ~/.local/share/dfx/env
 ```
 
 ### Setting Up The Python Environment
@@ -107,13 +108,15 @@ pyenv activate foodhub           # Activate the newly-created virtual environmen
 pip install -r requirements.txt  # Install dependencies
 ```
 
-## Local Deployment
+## Setting Up Environment For Frontend Development
 
-First, navigate the terminal to the project directory. For freshly
-setup environments first check if there is a problem with `dfx` by running...
+You will have to install NodeJS and NPM. Node Version Manager (NVM) allows
+us to install multiple NodeJS versions at the same time.
 
 ```bash
-dfx diagnose
+# Install NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/refs/heads/master/install.sh | bash
+nvm install 20.18.0  # Install NodeJS v20.18.0
 ```
 
 Ensure that the Node modules are installed. If not, or if it is missing some
@@ -124,6 +127,15 @@ of the dependencies, run the command while inside the directory where the
 npm install
 ```
 
+## Local Deployment
+
+First, navigate the terminal to the project directory. For freshly
+setup environments first check if there is a problem with `dfx` by running...
+
+```bash
+dfx diagnose
+```
+
 > [!NOTE]
 > Ensure that the virtual environment is active.
 > If not, locate your virtual environment and activate it using...
@@ -132,7 +144,7 @@ npm install
 > pyenv activate foodhub
 > ```
 
-Run the replica server,
+Run the replica server:
 
 ```bash
 dfx start

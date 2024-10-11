@@ -71,6 +71,9 @@ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 
+# Reload environment
+source ~/.bashrc
+
 # Install Python 3.10.7
 pyenv install 3.10.7 --verbose
 ```

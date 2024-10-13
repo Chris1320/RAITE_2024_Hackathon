@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import AppRouting from './AppRouting';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/main.css';
 import './styles/main-md.css';
 import './styles/main-sm.css';

@@ -10,9 +10,11 @@ function HomePage(){
     return (
         <div className="home">
             <div className="hero-banner">
-                <img src="/assets/banner.jpg" alt="hero banner"/>
+                <div className="img"></div>
                 <div className="hero-content">
-                    <img src="/logo.svg" alt="application logo" />
+                    <div className="logo-container">
+                        <img src="/logo.svg" alt="application logo" />
+                    </div>
                     <p className="slogan"><u>FoodHUB</u>, A place where you can share your surplus food supply for those who are in need.</p>
                     <br />
                     <div className="details">

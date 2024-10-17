@@ -1,0 +1,56 @@
+@media screen and (max-width: 1250px) {
+    .public-listing .items{
+        width: 80vw;
+    }
+
+    .profile-container .profile {
+        width: 80vw;
+    }
+
+    .my-listing >div {
+        width: 80vw;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .home .img {
+        display: none;
+    }
+
+    .home .hero-content {
+        margin: 30px 50px   ;
+        width: 100vw;
+    }
+
+    .home .logo-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .home .logo-container img {
+        width: 60vw !important;
+    }
+
+    .header .link  li{
+        font-size: 11px;
+    }
+    
+    .public-listing .items{
+        width: 90vw;
+    }
+
+    .profile-container .profile {
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .login-container .banner, .register-container .banner {
+        display: none;
+    }
+
+    .login-container .form, .register-container .form {
+        width: 100vw;
+    }
+}

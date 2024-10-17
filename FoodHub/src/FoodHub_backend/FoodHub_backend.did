@@ -1,1 +1,10 @@
-service : () -> { greet : (text) -> (text) query; sample : () -> (text) query }
+type Test = record { id : principal; item : blob };
+service : () -> {
+  getAllImages : () -> (vec Test) query;
+  getImage : (principal) -> (opt Test) query;
+  greet : (text) -> (text) query;
+  loginmethod : (text) -> (text);
+  registermethod : (text) -> (text);
+  sample : () -> (text) query;
+  upload : (blob) -> (Test);
+}

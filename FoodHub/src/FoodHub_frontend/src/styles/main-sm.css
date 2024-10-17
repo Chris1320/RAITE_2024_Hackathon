@@ -1,0 +1,98 @@
+@media screen and (max-width: 675px) {
+    .header {
+        display: block;
+    }
+
+    .header .navigation {
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+
+    .header .navigation li {
+        font-size: 15px;
+    }
+
+    .header .navigation a {
+        height: fit-content;
+        display: block;
+    }
+
+    .header .login {
+        margin: 0;
+    }
+
+    .header .login li {
+        border-top: solid 2px rgb(15 92 155);
+        border-bottom: none;
+        border-radius: 0px;
+    }
+
+    .header .register li {
+        border-top: solid 2px rgb(15 92 155);
+        color: #4e4e4e;
+        border-radius: 0px;
+        background-color: #f5f5f5;
+    }
+
+    .header .logo-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .header .logo-container img {
+        margin: 10px 0px;
+    }
+
+    .home .slogan {
+        font-size: 20px;
+    }
+
+    .login-container {
+        height: 70vh;
+    }
+
+    .register-container {
+        height: 80vh;
+    }
+
+    .public-listing .items{
+        width: 95vw;
+    }
+
+    .profile-container .controls .control-item {
+        width: 100%;
+    }
+
+    .my-listing > div {
+        width: 90vw;
+    }
+
+    .food-listing .search {
+        display: block;
+    }
+
+    .food-listing .search-field, .food-listing .add-item {
+        width: 100% !important;
+        margin: 5px 0px;
+    }
+
+    .food-listing .food {
+        display: block;
+    }
+
+    .food-listing .food > div {
+        display: block;
+    }
+
+    .food-listing .food > div img {
+        width: 95%;
+    }
+
+}
+
+@media screen and (max-width: 375px) {
+    .home .hero-content {
+        margin: 30px 20px;
+    }
+}

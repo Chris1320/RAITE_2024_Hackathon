@@ -50,6 +50,7 @@ function PasswordField(props){
                     id="password"
                     onChange={props.changed}
                     value={props.value}
+                    readOnly={props.readOnly}
                     type={showPassword? "text" : "password"}
                     endAdornment={
                         <InputAdornment position="end">

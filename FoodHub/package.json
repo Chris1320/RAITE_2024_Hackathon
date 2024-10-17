@@ -16,6 +16,7 @@
     "src/FoodHub_frontend"
   ],
   "dependencies": {
+    "FoodHub": "file:",
     "react-router-dom": "^6.26.2"
   }
 }

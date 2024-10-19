@@ -4,7 +4,7 @@ import json
 
 from storage import users
 
-from .models.users import User
+from models.users import User
 
 
 def is_username_unique(username: str) -> bool:

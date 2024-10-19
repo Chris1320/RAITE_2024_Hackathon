@@ -3,10 +3,9 @@
 import json
 
 from kybra import Opt, Principal, Record, StableBTreeMap, Vec, blob, query, update
+from models.users import User
 from storage import users
 from utils import generate_id, get_user, is_username_unique, update_user
-
-from .models.users import User
 
 
 class Test(Record):

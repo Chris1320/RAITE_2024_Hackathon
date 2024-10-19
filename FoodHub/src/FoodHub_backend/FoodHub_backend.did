@@ -3,8 +3,8 @@ service : () -> {
   getAllImages : () -> (vec Test) query;
   getImage : (principal) -> (opt Test) query;
   greet : (text) -> (text) query;
-  loginmethod : (text) -> (text);
-  registermethod : (text) -> (text);
+  login_user : (text) -> (text);
+  register_user : (text) -> (text);
   retrieve_profile : (text) -> (text) query;
   sample : () -> (text) query;
   update_profile : (text, text) -> (text);

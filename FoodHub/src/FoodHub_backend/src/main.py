@@ -24,80 +24,78 @@ def sample() -> str:
     return "some has been done"
 
 
-# register
 @update
-def registermethod(register_string: str) -> str:
-    result = {}
-    # decode to json
+def register_user(register_string: str) -> str:
+    """
+    Add a new user to the database.
+
+    :param register_string: a JSON string containing the user's information.
+
+    :return: a JSON string containing whether the user was successfully registered.
+    """
+
     data = json.loads(register_string)
 
-    if is_username_unique(data["username"]):
-        id = generate_id()
-        user: User = {
-            "id": id,
-            "firstName": data["firstName"],
-            "lastName": data["lastName"],
-            "password": data["password"],
-            "hasOrganization": data["hasOrganization"],
-            "organizationName": data["organizationName"],
-            "organizationAddress": data["organizationAddress"],
-            "username": data["username"],
-        }
-        users.insert(user["id"], user)
-        result["registered"] = True
-    else:
-        result["registered"] = False
-        result["message"] = "Username is already registered"
-    return json.dumps(result)
+    if not is_username_unique(data["username"]):
+        json.dumps({"registered": False, "message": "Username is already registered"})
+
+    id = generate_id()
+    user: User = {
+        "id": id,
+        "firstName": data["firstName"],
+        "lastName": data["lastName"],
+        "password": data["password"],
+        "hasOrganization": data["hasOrganization"],
+        "organizationName": data["organizationName"],
+        "organizationAddress": data["organizationAddress"],
+        "username": data["username"],
+    }
+    users.insert(user["id"], user)
+    return json.dumps({"registered": True})
 
 
-# login
 @update
-def loginmethod(login_payload: str) -> str:
+def login_user(login_payload: str) -> str:
+    """
+    Check if the user is registered and if the password is correct.
+    """
+
     data = json.loads(login_payload)
-    result = {}
     user = get_user(data["username"])
 
-    if user == None:
-        result["logged"] = False
-        result["message"] = "Username is not registered"
-    else:
-        if user["password"] != data["password"]:
-            result["logged"] = False
-            result["message"] = "Password is incorrect"
-        else:
-            result["logged"] = True
-            result["message"] = "successful login"
-            result["token"] = user["username"]
-            # will return { logged: true, message: "successful login", loggeduser: <username> }
-    return json.dumps(result)
+    if user is None:
+        return json.dumps({"logged": False, "message": "Username is not registered"})
+
+    if user["password"] != data["password"]:
+        return json.dumps({"logged": False, "message": "Password is incorrect"})
+
+    return json.dumps(
+        {"logged": True, "message": "successful login", "token": user["username"]}
+    )
 
 
 @query
 def retrieve_profile(username: str) -> str:
 
-    result = {}
-
     if not username:
-        result["message"] = "not authenticated"
-    else:
-        user = get_user(username)
-        if user:
-            result["message"] = "retrieved user profile successfully"
-            user.pop("id")
-            result["payload"] = user
-        else:
-            result["message"] = "user profile not found"
-    return json.dumps(result)
+        return json.dumps({"message": "not authenticated"})
+
+    user = get_user(username)
+    if user is None:
+        return json.dumps({"message": "user profile not found"})
+
+    user.pop("id")
+    return json.dumps(
+        {"message": "retrieved user profile successfully", "payload": user}
+    )
 
 
 @update
 def update_profile(username: str, payload: str) -> str:
-    result = {}
     if not username:
-        result["message"] = "not authenticated"
-    else:
-        update_user(username, payload)
+        return json.dumps({"message": "not authenticated"})
+
+    update_user(username, payload)
 
 
 @query

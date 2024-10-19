@@ -18,5 +18,10 @@
   "dependencies": {
     "FoodHub": "file:",
     "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "rollup": "^4.24.0"
   }
 }

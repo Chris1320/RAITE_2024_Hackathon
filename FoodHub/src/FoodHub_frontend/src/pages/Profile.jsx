@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faClose, faPencilAlt, faX } from "@fortawesome/free-solid-svg-icons";
 import { isFormValid } from "../utils/Utils";
 import { Modal } from "react-bootstrap";
+import { FoodHub_backend } from 'declarations/FoodHub_backend';
 
 function Profile(props){
 
@@ -37,7 +38,10 @@ function Profile(props){
 
     useEffect(() => {
         //retrive user data
-    })
+        FoodHub_backend.retrieve_profile(prop.authContext.principal).then((e) => {
+            console.log(e);
+        })
+    }, [])
 
     const toggleModal = (messages = []) => {
         setModal({

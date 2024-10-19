@@ -19,7 +19,7 @@ function Header(props){
                     <Link to="/profile" className="login link">
                         <li className="center-parent">PROFILE</li>
                     </Link>
-                    <Link to="/login" onClick={() => props.toggleAuth(false)} className="logout link">
+                    <Link to="/login" onClick={() => {props.toggleAuth(false)}} className="logout link">
                         <li className="center-parent">Sign Out</li>
                     </Link>
                 </>

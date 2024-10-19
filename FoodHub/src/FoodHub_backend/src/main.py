@@ -5,17 +5,25 @@ from kybra import (
     blob,
     ic,
     nat64,
+    nat8,
     Opt,
     Principal,
     Record,
     StableBTreeMap,
     Variant,
-    Vec
+    Vec,
 )
+
 import json
 from storage import users
-from utils import is_username_unique, generate_id, get_user
+from utils import (
+    is_username_unique, 
+    generate_id, 
+    get_user,
+    update_user
+)
 import User
+
 
 class Test(Record):
     id: Principal
@@ -74,8 +82,33 @@ def loginmethod(login_payload: str) -> str:
             result["logged"] = True
             result["message"] = "successful login"
             result["token"] = user["username"]
+            # will return { logged: true, message: "successful login", loggeduser: <username> }
     return json.dumps(result)
 
+@query
+def retrieve_profile(username: str) -> str:
+
+    result = {}
+    
+    if (not username):
+        result["message"] = "not authenticated"
+    else:
+        user = get_user(username)
+        if (user):
+            result["message"] = "retrieved user profile successfully"
+            user.pop("id")
+            result["payload"] = user
+        else:
+            result["message"] = "user profile not found"
+    return json.dumps(result)
+
+@update
+def update_profile(username: str, payload: str) -> str:
+    result = {}
+    if (not username):
+        result["message"] = "not authenticated"
+    else:
+        update_user(username, payload)
 @query
 def getImage(id: Principal) -> Opt[Test]:
     return sampleST.get(id)

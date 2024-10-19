@@ -29,6 +29,7 @@ jobs:
       - name: Install DFX
         uses: dfinity/setup-dfx@main
       - name: Build Check
+        working-directory: ./FoodHub
         run: |
           dfx cache install
           dfx start --background

@@ -29,7 +29,7 @@ jobs:
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r ./FoodHub/requirements.txt
+          pip install -r ./requirements.txt
       - name: Install NodeJS Dependencies
         run: npm install
       - name: Install DFX

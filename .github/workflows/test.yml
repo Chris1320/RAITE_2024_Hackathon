@@ -7,6 +7,10 @@ concurrency:
   group: ${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    working-directory: ./FoodHub
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,12 +31,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ./FoodHub/requirements.txt
       - name: Install NodeJS Dependencies
-        working-directory: ./FoodHub
         run: npm install
       - name: Install DFX
         uses: dfinity/setup-dfx@main
       - name: Build Check
-        working-directory: ./FoodHub
         run: |
           dfx cache install
           dfx start --background

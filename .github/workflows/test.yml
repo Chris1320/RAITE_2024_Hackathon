@@ -31,7 +31,7 @@ jobs:
           pip install -r ./requirements.txt
       - name: Install NodeJS Dependencies
         run: |
-          npm install
+          npm install --verbose
       - name: Install DFX
         uses: dfinity/setup-dfx@main
       - name: Build Check

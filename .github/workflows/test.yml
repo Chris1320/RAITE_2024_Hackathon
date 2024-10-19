@@ -25,17 +25,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20.18.x
-          cache: "npm"
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r ./requirements.txt
       - name: Install NodeJS Dependencies
-        run: npm install
+        run: |
+          npm install
       - name: Install DFX
         uses: dfinity/setup-dfx@main
       - name: Build Check
         run: |
-          dfx cache install
           dfx start --background
           dfx build --check

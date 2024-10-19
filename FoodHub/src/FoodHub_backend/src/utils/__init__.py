@@ -1,4 +1,6 @@
-from .generateid import generate_id
-from .unique import is_username_unique, get_user, update_user
+#!/usr/bin/env python3
 
-__all__ = ['generate_id', 'is_username_unique', 'get_user', 'update_user']
+from .generateid import generate_id
+from .unique import get_user, is_username_unique, update_user
+
+__all__ = ["generate_id", "is_username_unique", "get_user", "update_user"]

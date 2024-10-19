@@ -1,7 +1,10 @@
-from kybra import StableBTreeMap, Principal
+#!/usr/bin/env python3
+
+import json
+
 import User
 from storage import users
-import json
+
 
 def is_username_unique(username: str) -> bool:
     for user in users.values():
@@ -9,11 +12,13 @@ def is_username_unique(username: str) -> bool:
             return False
     return True
 
+
 def get_user(username: str) -> User:
     for user in users.values():
         if user["username"] == username:
             return user
     return None
+
 
 def update_user(username: str, update_val: str) -> User:
     for user in users.values():

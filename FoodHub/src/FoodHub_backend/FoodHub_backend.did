@@ -7,5 +7,6 @@ service : () -> {
   registermethod : (text) -> (text);
   retrieve_profile : (text) -> (text) query;
   sample : () -> (text) query;
+  update_profile : (text, text) -> (text);
   upload : (blob) -> (Test);
 }

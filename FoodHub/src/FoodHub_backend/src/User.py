@@ -1,10 +1,7 @@
-from kybra import (
-    nat64,
-    Principal,
-    Record,
-    Vec,
-    Opt
-)
+#!/usr/bin/env python3
+
+from kybra import Opt, Principal, Record
+
 
 class User(Record):
     id: Principal
